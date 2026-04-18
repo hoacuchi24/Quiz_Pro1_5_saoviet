@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Ôn Tập MOS Excel 2019 — Project 1 → 5</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Be Vietnam Pro',sans-serif;background:#f0f2f5;color:#1e293b;line-height:1.6}
+.hero{background:linear-gradient(135deg,#0c2d48 0%,#145374 40%,#2e8b57 100%);color:#fff;padding:32px 20px 28px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.hero h1{font-size:21px;font-weight:800;letter-spacing:1px}
+.hero p{font-size:13px;opacity:.8;margin-top:4px}
+.scoreboard{display:flex;justify-content:center;gap:16px;margin-top:14px;font-size:13px;font-weight:600;flex-wrap:wrap}
+.scoreboard span{background:rgba(255,255,255,.15);padding:4px 14px;border-radius:18px}
+#sc-ok{color:#4ade80}#sc-no{color:#f87171}#sc-re{color:#fbbf24}
+.container{max-width:840px;margin:0 auto;padding:20px 16px 60px}
+.topic-hdr{padding:12px 20px;border-radius:12px;margin:28px 0 14px;color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.topic-hdr .badge{background:rgba(255,255,255,.2);padding:3px 12px;border-radius:12px;font-size:12px;font-weight:500}
+.qc{background:#fff;border-radius:14px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,.06);border:1.5px solid #e2e8f0;overflow:hidden;transition:border-color .3s}
+.qc.ok{border-color:#22c55e}.qc.ng{border-color:#ef4444}
+.qh{padding:14px 18px 10px;display:flex;gap:10px;align-items:flex-start}
+.qn{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0;margin-top:2px}
+.qt{font-size:13.5px;font-weight:500;flex:1}
+.qm{font-size:10px;color:#fff;background:#64748b;padding:2px 7px;border-radius:5px;font-weight:600;white-space:nowrap;align-self:flex-start;margin-top:3px}
+.opts{padding:0 18px 14px}
+.op{display:flex;align-items:flex-start;gap:9px;padding:9px 12px;margin-bottom:5px;border-radius:9px;border:1.5px solid #e2e8f0;cursor:pointer;transition:all .2s;font-size:12.5px}
+.op:hover:not(.dis){background:#f8fafc;border-color:#94a3b8}
+.op .le{width:24px;height:24px;border-radius:7px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#64748b;flex-shrink:0;transition:all .2s}
+.op .tx{flex:1;padding-top:2px}
+.op.co{background:#dcfce7!important;border-color:#22c55e!important}.op.co .le{background:#22c55e;color:#fff}
+.op.wr{background:#fee2e2!important;border-color:#ef4444!important}.op.wr .le{background:#ef4444;color:#fff}
+.op.dis{cursor:default;opacity:.7}.op.co.dis{opacity:1}
+.ea{padding:0 18px 14px;display:none}
+.eb{background:none;border:1.5px dashed #94a3b8;color:#64748b;padding:6px 14px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.eb:hover{border-color:#3b82f6;color:#3b82f6}
+.ec{margin-top:8px;padding:10px 14px;background:#f0f9ff;border-radius:9px;border-left:4px solid #3b82f6;font-size:12px;color:#1e40af;line-height:1.7;display:none}
+.ec b{color:#1e3a5f}
+.footer{text-align:center;padding:30px;font-size:11px;color:#94a3b8}
+@media(max-width:600px){.hero h1{font-size:16px}.qh{padding:10px 12px 8px}.opts{padding:0 12px 10px}.op{padding:7px 9px;font-size:11.5px}}
+</style>
+</head>
+<body>
+<div class="hero">
+<h1>QUIZ ÔN TẬP MOS EXCEL 2019</h1>
+<p>Project 1 → Project 5 · 40 câu hỏi thao tác</p>
+<div class="scoreboard"><span id="sc-ok">✅ 0</span><span id="sc-no">❌ 0</span><span id="sc-re">📝 40</span></div>
+</div>
+<div class="container" id="qz"></div>
+<div class="footer">MOS Excel 2019 (MO-200) — Quiz Ôn Tập Project 1–5 — 40 câu</div>
+<script>
+const Q=[
+// ══════ PROJECT 1 ══════
+{p:1,n:1,q:'Để thiết lập vùng in (Print Area) cho dãy ô A7:I46 trên trang tính "Exam Bookings", bạn thao tác thế nào?',
+o:['Chọn A7:I46 → File → Print → Print Selection','Chọn A7:I46 → Page Layout → Print Area → Set Print Area','Chọn A7:I46 → View → Page Break Preview → Set Area','Chọn A7:I46 → Home → Format → Print Area'],
+a:1,e:'Chọn dãy ô A7:I46 trước → <b>Page Layout → Print Area → Set Print Area</b>. Chỉ vùng này sẽ được in khi nhấn Print.'},
+
+{p:1,n:2,q:'Trên trang tính "Weekly Summary", để lọc bảng chỉ hiển thị những kỳ thi có Certiport ID là "9003992", bạn làm gì?',
+o:['Data → Sort → Sort by Certiport ID → giá trị 9003992','Nhấn mũi tên dropdown cột Certiport ID → bỏ Select All → chọn 9003992 → OK','Home → Find & Select → 9003992','Data → Advanced Filter → Criteria: 9003992'],
+a:1,e:'Bảng đã có <b>AutoFilter</b> (mũi tên ở tiêu đề cột). Nhấn mũi tên cột <b>Certiport ID</b> → bỏ tick <b>Select All</b> → tick giá trị <b>9003992</b> → OK.'},
+
+{p:1,n:3,q:'Trên trang tính "Suppliers", để hiển thị "Yes" nếu Quantity in Stock > 6000, ngược lại "No", công thức đúng là gì?',
+o:['=IF(E2>6000,"No","Yes")','=IF(E2<6000,"Yes","No")','=IF(E2>6000,"Yes","No")','=SWITCH(E2,">6000","Yes","No")'],
+a:2,e:'<b>=IF(E2>6000,"Yes","No")</b>. Cú pháp: IF(điều_kiện, giá_trị_đúng, giá_trị_sai). E2 là ô đầu tiên cột "Quantity in Stock". Kéo công thức xuống các dòng còn lại.'},
+
+{p:1,n:4,q:'Để sắp xếp bảng theo "Toy Category" (A-Z) rồi theo "Supplier Name" (A-Z), bạn dùng lệnh nào?',
+o:['Nhấn mũi tên cột Toy Category → Sort A to Z (rồi làm tương tự cột Supplier Name)','Data → Sort → Sort by: Toy Category (A to Z) → Add Level → Then by: Supplier Name (A to Z) → OK','Home → Sort & Filter → Sort by Toy → Sort by Supplier','Table Design → Sort → Multi-level → 2 cột'],
+a:1,e:'<b>Data → Sort</b> → chọn <b>Sort by: Toy Category</b> (A to Z) → nhấn <b>Add Level</b> → <b>Then by: Supplier Name</b> (A to Z) → OK. Đây là sắp xếp đa cấp (multi-level sort).'},
+
+{p:1,n:5,q:'Trên trang tính "Customers", để tạo email = FirstName + "@tinhocsaoviet.com", bạn dùng hàm nào?',
+o:['=LOWER(C2&"@tinhocsaoviet.com")','=TEXTJOIN("@",TRUE,C2,"tinhocsaoviet.com")','=CONCAT(C2,"@tinhocsaoviet.com")','=LEFT(C2)&"@tinhocsaoviet.com"'],
+a:2,e:'<b>=CONCAT(C2,"@tinhocsaoviet.com")</b> hoặc =CONCATENATE(C2,"@tinhocsaoviet.com"). C2 là ô đầu tiên cột First Name. Kéo công thức xuống cho các dòng khác.'},
+
+{p:1,n:6,q:'Để cấu hình bảng tự động tô bóng xen kẽ các dòng (Banded Rows) trên "Exam Bookings", bạn vào đâu?',
+o:['Home → Conditional Formatting → Highlight Cells Rules → Alternating','Table Design → Table Style Options → tick Banded Rows','Page Layout → Themes → Row Shading','Data → Group → Banded Rows'],
+a:1,e:'Click vào bảng → tab <b>Table Design</b> xuất hiện → trong nhóm <b>Table Style Options</b> → tick <b>Banded Rows</b>. Các dòng xen kẽ sẽ được tô màu khác nhau.'},
+
+{p:1,n:7,q:'Để di chuyển biểu đồ trên "Exam Bookings" sang sheet riêng tên "Fee Chart", bạn làm gì?',
+o:['Ctrl+X biểu đồ → tạo sheet mới tên Fee Chart → Ctrl+V','Chuột phải biểu đồ → Move Chart → New Sheet → gõ "Fee Chart" → OK','Chart Design → Move Chart → Object in → Fee Chart','Kéo biểu đồ xuống dưới cùng sheet → tự tạo chart sheet'],
+a:1,e:'Chuột phải biểu đồ → <b>Move Chart</b> → chọn <b>New Sheet</b> → gõ tên <b>"Fee Chart"</b> → OK. Biểu đồ sẽ chiếm toàn bộ sheet mới.'},
+
+{p:1,n:8,q:'Để xóa TẤT CẢ quy luật Conditional Formatting trên trang tính "Suppliers", bạn dùng lệnh nào?',
+o:['Home → Clear → Clear All','Home → Conditional Formatting → Clear Rules → Clear Rules from Entire Sheet','Chọn tất cả ô → Delete → Clear Formatting','Home → Conditional Formatting → Manage Rules → Delete tất cả'],
+a:1,e:'<b>Home → Conditional Formatting → Clear Rules → Clear Rules from Entire Sheet</b>. Lệnh này xóa tất cả CF rules trên sheet mà không ảnh hưởng dữ liệu hay định dạng ô thường.'},
+
+// ══════ PROJECT 2 ══════
+{p:2,n:1,q:'Để nhập dữ liệu từ tập tin văn bản Instructors vào ô A1 trang tính "Instructors", bạn thực hiện thế nào?',
+o:['File → Open → chọn file text → Copy tất cả → Paste vào A1','Data → From Text/CSV → chọn file → Import → Use First Row as Headers → Close & Load To → Existing Worksheet → A1','Insert → Object → Text File','Home → Paste Special → Text Import'],
+a:1,e:'<b>Data → From Text/CSV</b> → chọn file → Import → tick <b>Use First Row as Headers</b> → <b>Close & Load To</b> → chọn <b>Existing Worksheet</b> → click ô A1 → OK.'},
+
+{p:2,n:2,q:'Để điều chỉnh độ rộng các cột B:G chính xác bằng 12 trên "Bank Deposits", bạn làm gì?',
+o:['Chọn cột B đến G → kéo chuột điều chỉnh đến khi hiện 12','Chọn cột B đến G → chuột phải → Column Width → gõ 12 → OK','Home → Format → AutoFit Column Width → 12','Page Layout → Width → 12'],
+a:1,e:'Chọn cột B đến G (click tiêu đề B, giữ Shift click G) → <b>chuột phải → Column Width</b> → gõ <b>12</b> → OK. Cách này đặt chính xác giá trị, không dùng kéo chuột.'},
+
+{p:2,n:3,q:'Để chèn Column Sparklines vào ô E3:E6 trên "Enrollment" so sánh dữ liệu các học kỳ, bạn vào đâu?',
+o:['Insert → Charts → Column → chọn range','Insert → Sparklines → Column → Data Range: B3:D6 → Location: E3:E6 → OK','Home → Conditional Formatting → Data Bars','Formulas → Insert Function → SPARKLINE'],
+a:1,e:'<b>Insert → Sparklines → Column</b>. Hộp thoại: <b>Data Range</b> = vùng dữ liệu nguồn (B3:D6), <b>Location Range</b> = nơi đặt sparkline (E3:E6). Sparkline là biểu đồ thu nhỏ trong ô.'},
+
+{p:2,n:4,q:'Để cố định (Freeze) dòng 1, 2 và cột bên trái trên "Enrollment", bạn chọn ô nào trước khi Freeze?',
+o:['Ô A1 → View → Freeze Panes','Ô A3 → View → Freeze Panes → Freeze Top Row','Ô B3 → View → Freeze Panes → Freeze Panes','Ô C1 → View → Freeze Panes'],
+a:2,e:'Chọn ô <b>B3</b> (giao điểm: dưới dòng 2, phải cột A) → <b>View → Freeze Panes → Freeze Panes</b>. Excel sẽ cố định tất cả dòng phía trên và cột bên trái ô đã chọn.'},
+
+{p:2,n:5,q:'Trên "Figure", ô L10 cần nhập SUM dùng tên vùng Total1, Total2, Total3. Công thức đúng là gì?',
+o:['=SUM(A1:A10,B1:B10,C1:C10)','=Total1+Total2+Total3','=SUM(Total1,Total2,Total3)','=SUM("Total1","Total2","Total3")'],
+a:2,e:'<b>=SUM(Total1,Total2,Total3)</b>. Đề yêu cầu dùng <b>tên vùng</b> (named range) thay cho địa chỉ ô. Không đặt tên trong ngoặc kép (đó là chuỗi text, không phải tên vùng).'},
+
+{p:2,n:6,q:'Để thêm Alt Text mô tả "Yearly Revenue" vào biểu đồ trên "Figure", bạn làm gì?',
+o:['Click biểu đồ → gõ "Yearly Revenue" trực tiếp lên chart','Chuột phải biểu đồ → View Alt Text → gõ "Yearly Revenue"','Chart Design → Add Chart Element → Alt Text → Yearly Revenue','Insert → Text Box → gõ Yearly Revenue → đặt lên biểu đồ'],
+a:1,e:'<b>Chuột phải biểu đồ → View Alt Text</b> (hoặc Edit Alt Text). Panel mở ra bên phải → gõ <b>"Yearly Revenue"</b>. Alt Text giúp screen reader mô tả biểu đồ cho người khiếm thị.'},
+
+{p:2,n:7,q:'Để áp dụng Conditional Formatting 3 Traffic Lights (Unrimmed) cho cột "Price" trên "Car Inventory", bạn vào đâu?',
+o:['Home → Conditional Formatting → Color Scales → 3 Color','Home → Conditional Formatting → Icon Sets → 3 Traffic Lights (Unrimmed)','Home → Conditional Formatting → Data Bars → Traffic','Home → Conditional Formatting → Highlight Cells Rules → Traffic Lights'],
+a:1,e:'Chọn dữ liệu cột Price → <b>Home → Conditional Formatting → Icon Sets → 3 Traffic Lights (Unrimmed)</b>. Mỗi ô sẽ hiện đèn xanh/vàng/đỏ tùy giá trị.'},
+
+{p:2,n:8,q:'Để áp dụng kiểu White, Table Style Medium 1 cho bảng trên "Enrollment", bạn thao tác thế nào?',
+o:['Chọn bảng → Home → Format as Table → White Table Style Medium 1','Chọn ô trong bảng → Table Design → Table Styles → chọn White, Table Style Medium 1','Chọn bảng → Page Layout → Themes → Table Style Medium 1','Chọn bảng → Insert → Table → Style Medium 1'],
+a:1,e:'Click ô trong bảng → tab <b>Table Design</b> → nhóm <b>Table Styles</b> → chọn <b>White, Table Style Medium 1</b>. Bảng sẽ thay đổi màu sắc theo kiểu đã chọn.'},
+
+// ══════ PROJECT 3 ══════
+{p:3,n:1,q:'Để điều hướng đến vùng có tên "Convertible" và xóa nội dung, bạn làm gì?',
+o:['Ctrl+F → gõ Convertible → Find → Delete','Click Name Box (ô địa chỉ) → chọn Convertible → nhấn Delete (hoặc Home → Clear → Clear Contents)','Formulas → Name Manager → chọn Convertible → Delete','Data → Go To → Convertible → Clear All'],
+a:1,e:'Click vào <b>Name Box</b> (ô hiển thị địa chỉ ô, góc trái thanh công thức) → chọn <b>Convertible</b> → Excel tự chọn vùng → nhấn <b>Delete</b> hoặc Home → Clear → Clear Contents.'},
+
+{p:3,n:2,q:'Để định dạng ô F2:G11 hiển thị số với 2 chữ số thập phân trên "Suppliers", bạn thao tác thế nào?',
+o:['Chọn F2:G11 → Home → nhấn nút .00 → .0 (Increase Decimal) 2 lần','Chọn F2:G11 → chuột phải → Format Cells → Number → Decimal places: 2 → OK','Chọn F2:G11 → Home → Number Format → Percentage','Chọn F2:G11 → Data → Text to Columns → Fixed width → 2 decimal'],
+a:1,e:'Chọn F2:G11 → <b>chuột phải → Format Cells → tab Number → chọn Number</b> → đặt <b>Decimal places: 2</b> → OK. Hoặc dùng Ctrl+1 để mở Format Cells nhanh hơn.'},
+
+{p:3,n:3,q:'Để xóa hàng bảng chứa "IELTS" trên "Informatics Exam" mà không ảnh hưởng dữ liệu ngoài bảng, bạn làm gì?',
+o:['Click số dòng chứa IELTS → chuột phải → Delete','Chọn ô chứa "IELTS" → chuột phải → Delete → Table Rows','Chọn ô → Home → Delete → Delete Sheet Rows','Chọn ô → nhấn Ctrl+- → Entire Row'],
+a:1,e:'Chọn ô chứa "IELTS" → chuột phải → <b>Delete → Table Rows</b>. <b>KHÔNG dùng Delete Sheet Rows</b> hoặc click số dòng → Delete vì sẽ xóa cả dữ liệu ngoài bảng.'},
+
+{p:3,n:4,q:'Trên "Gmetrix Account", để tính trung bình từ tháng 1 đến tháng 4 cho mỗi kỳ thi, hàm đúng là gì?',
+o:['=SUM(B2:E2)/4','=AVERAGE(B2:E2)','=MEDIAN(B2:E2)','=COUNT(B2:E2)'],
+a:1,e:'<b>=AVERAGE(B2:E2)</b> tính trung bình cộng các giá trị từ B2 (Tháng 1) đến E2 (Tháng 4). SUM/4 cũng cho kết quả đúng nhưng AVERAGE là hàm chuyên dụng, gọn hơn.'},
+
+{p:3,n:5,q:'Để thêm "Account" làm tiêu đề trục dọc chính (Primary Vertical Axis Title) trên biểu đồ, bạn vào đâu?',
+o:['Chuột phải trục dọc → Format Axis → Title: Account','Chart Design → Add Chart Element → Axis Titles → Primary Vertical → gõ Account','Chart Design → Chart Title → Account','Insert → Text Box → gõ Account → đặt cạnh trục dọc'],
+a:1,e:'Chọn biểu đồ → <b>Chart Design → Add Chart Element → Axis Titles → Primary Vertical</b>. Ô tiêu đề trục xuất hiện → gõ <b>"Account"</b> → click ra ngoài.'},
+
+{p:3,n:6,q:'Trên "Used Car Sales", để căn lề trái (Left Align) cho ô A2, cách nhanh nhất là gì?',
+o:['Chọn A2 → Home → nhấn nút Align Left (trong nhóm Alignment)','Chọn A2 → chuột phải → Format Cells → Alignment → Left','Chọn A2 → Page Layout → Alignment → Left','Chọn A2 → View → Align Left'],
+a:0,e:'Chọn ô A2 → <b>Home → nút Align Left</b> (biểu tượng căn trái trong nhóm Alignment). Đây là cách nhanh nhất. Chuột phải → Format Cells cũng đúng nhưng mất thêm bước.'},
+
+{p:3,n:7,q:'Để mở rộng (extend) công thức trong ô I6 đến cuối cột bảng trên "Used Car Sales", bạn làm gì?',
+o:['Chọn I6 → Ctrl+C → chọn I7 đến cuối → Ctrl+V','Chọn I6 → đặt chuột góc phải dưới (fill handle, dấu +) → kéo xuống hết cột bảng','Chọn I6 → Home → Fill → Down','Chọn I6 → Formulas → Calculate → Fill Column'],
+a:1,e:'Chọn ô I6 → đặt chuột vào <b>góc phải dưới</b> (con trỏ thành dấu <b>+</b>) → <b>kéo xuống</b> đến hết cột bảng. Đây là <b>fill handle</b> — cách nhanh nhất để sao chép công thức.'},
+
+{p:3,n:8,q:'Để hiển thị con số cao nhất từ cột "Stock Value" (F2:F11) trên "Suppliers", hàm đúng là gì?',
+o:['=LARGE(F2:F11,1)','=MAX(F2:F11)','=MIN(F2:F11)','=RANK(F2,F2:F11)'],
+a:1,e:'<b>=MAX(F2:F11)</b> trả về giá trị lớn nhất trong dãy. LARGE(F2:F11,1) cũng cho kết quả giống MAX nhưng MAX đơn giản hơn. MIN là giá trị nhỏ nhất (ngược lại).'},
+
+// ══════ PROJECT 4 ══════
+{p:4,n:1,q:'Trên "Demographics", để hoán đổi dữ liệu qua trục (swap axis) trên biểu đồ "Toys Category", bạn dùng lệnh nào?',
+o:['Chart Design → Change Chart Type → chọn loại khác','Chuột phải biểu đồ → Select Data → Switch Row/Column','Chart Design → Switch Row/Column','Format → Axis Options → Swap'],
+a:2,e:'Chọn biểu đồ → <b>Chart Design → Switch Row/Column</b>. Lệnh này hoán đổi vai trò hàng và cột: dữ liệu trục ngang ↔ Legend series.'},
+
+{p:4,n:2,q:'Để sao chép định dạng tiêu đề từ "Used Car Sales" sang "New Car Sales" bằng Format Painter, bạn làm gì?',
+o:['Chọn ô tiêu đề "Used Car Sales" → nhấn Format Painter (cây cọ) → click ô tiêu đề "New Car Sales"','Chọn ô tiêu đề → Ctrl+C → chọn ô đích → Paste Special → Formats','Chọn ô tiêu đề → Home → Cell Styles → Apply to New Car Sales','Cả A và B đều đúng'],
+a:3,e:'Cả 2 cách đều sao chép định dạng: (1) <b>Format Painter</b> (click cây cọ rồi quét ô đích), (2) <b>Ctrl+C → Paste Special → Formats</b>. Format Painter nhanh hơn cho thao tác đơn lẻ.'},
+
+{p:4,n:3,q:'Trên chart sheet "Informatics Exam", để xóa Legend và hiển thị giá trị (Value) làm Data Labels phía trên cột, bạn làm gì?',
+o:['Chart Design → Add Chart Element → Legend → None → rồi Data Labels → Above','Delete Legend → Chart Design → Add Chart Element → Data Labels → Data Callout','Chuột phải Legend → Delete → Chuột phải cột → Add Data Labels','Cả A và C đều thực hiện được'],
+a:3,e:'Nhiều cách: (1) <b>Add Chart Element → Legend → None</b> rồi <b>Data Labels → Above</b>, hoặc (2) click Legend → Delete, chuột phải cột → <b>Add Data Labels</b>. Cả hai đều đạt kết quả.'},
+
+{p:4,n:4,q:'Để chuyển bảng thành vùng tính thường (Convert to Range) trên "New Car Sales", bạn vào đâu?',
+o:['Table Design → Tools → Convert to Range → Yes','Home → Clear → Clear Table','Data → Remove Table','Chọn bảng → Delete → Keep Data'],
+a:0,e:'Click ô trong bảng → <b>Table Design → Convert to Range → Yes</b>. Bảng mất chức năng Table (filter, total row...) nhưng giữ nguyên dữ liệu và định dạng.'},
+
+{p:4,n:5,q:'Trên "Report", để tạo biểu đồ Clustered Column hiển thị Quantity theo tháng, bạn chọn dữ liệu thế nào?',
+o:['Chọn cả bảng → Insert → Recommended Charts','Chọn 2 cột Month và Quantity (kể cả tiêu đề) → Insert → Column → Clustered Column','Chọn chỉ cột Quantity → Insert → Column','Chọn cột Month → Insert → Column → rồi Add Data sau'],
+a:1,e:'Chọn <b>2 cột Month và Quantity kể cả tiêu đề</b> → <b>Insert → Column → Clustered Column</b>. Tháng làm trục ngang (Categories), Quantity làm giá trị (Values). Đặt chart dưới bảng.'},
+
+{p:4,n:6,q:'Trên "Demographics", để hiển thị 2 ký tự đầu của "Category" (cột B) vào cột "TCC", hàm đúng là gì?',
+o:['=RIGHT(B3,2)','=MID(B3,1,2)','=LEFT(B3,2)','=SUBSTRING(B3,2)'],
+a:2,e:'<b>=LEFT(B3,2)</b> lấy 2 ký tự từ bên trái chuỗi. RIGHT lấy từ phải. MID(B3,1,2) cũng đúng nhưng LEFT đơn giản hơn. Excel không có hàm SUBSTRING.'},
+
+{p:4,n:7,q:'Trên "Report", ô B10 cần nối Lastname + ", " + Firstname (VD: Akkers, Leah). Công thức đúng là gì?',
+o:['=D10&C10','=CONCAT(D10,", ",C10)','=TEXTJOIN(", ",TRUE,D10,C10)','Cả B và C đều đúng'],
+a:3,e:'Cả 2 đều tạo chuỗi "Lastname, Firstname": <b>CONCAT(D10,", ",C10)</b> và <b>TEXTJOIN(", ",TRUE,D10,C10)</b>. D10 = Lastname, C10 = Firstname, dấu ", " là phân cách.'},
+
+{p:4,n:8,q:'Để chèn Footer "Page 1 of ?" ở giữa trang tính "Demographics", bạn thực hiện thế nào?',
+o:['Page Layout → Footer → Center → Page Number','Insert → Header & Footer → click ô giữa Footer → chọn template "Page 1 of ?"','File → Print → Edit Footer → Page 1 of ?','View → Footer → Center Section → &P of &N'],
+a:1,e:'<b>Insert → Header & Footer</b> → Excel chuyển sang Page Layout view → cuộn xuống click vào <b>ô giữa của Footer</b> → nhấn dropdown <b>Footer</b> → chọn <b>"Page 1 of ?"</b>.'},
+
+// ══════ PROJECT 5 ══════
+{p:5,n:1,q:'Để thêm link vào hình ảnh mã QR trên "Figure" đến URL YouTube, bạn làm gì?',
+o:['Chọn hình QR → Ctrl+K (hoặc chuột phải → Link/Hyperlink) → gõ URL → OK','Chọn hình QR → Insert → Comment → gõ URL','Chọn hình QR → Format → Alt Text → gõ URL','Chọn hình QR → Chart Design → Add Link'],
+a:0,e:'Chọn hình ảnh QR → <b>Ctrl+K</b> (hoặc chuột phải → <b>Link / Hyperlink</b>) → gõ URL vào ô <b>Address</b> → OK. Hyperlink gắn vào hình ảnh, click vào hình sẽ mở URL.'},
+
+{p:5,n:2,q:'Để đặt tên bảng là "Informatics" trên trang tính cùng tên, bạn thao tác ở đâu?',
+o:['Chuột phải vào bảng → Rename Table → Informatics','Click ô trong bảng → Table Design → Table Name → gõ Informatics → Enter','Formulas → Define Name → Informatics','Home → Format → Rename → Informatics'],
+a:1,e:'Click ô trong bảng → tab <b>Table Design</b> → ô <b>Table Name</b> (góc trái) → gõ <b>"Informatics"</b> → nhấn <b>Enter</b>. Tên bảng dùng trong công thức có cấu trúc (structured references).'},
+
+{p:5,n:3,q:'Trên "Figure", để hiển thị Data Table KHÔNG có Legend Keys trên biểu đồ, bạn chọn lệnh nào?',
+o:['Chart Design → Add Chart Element → Data Table → With Legend Keys','Chart Design → Add Chart Element → Data Table → No Legend Keys','Chuột phải biểu đồ → Insert Data Table → uncheck Legend','Chart Design → Quick Layout → chọn layout có Data Table'],
+a:1,e:'Chọn biểu đồ → <b>Chart Design → Add Chart Element → Data Table → No Legend Keys</b>. Bảng dữ liệu hiện dưới biểu đồ nhưng không hiện ký hiệu màu ở cột đầu.'},
+
+{p:5,n:4,q:'Để xóa chức năng bảng (Convert to Range) trên "Sales by Exam" mà giữ nguyên định dạng, bạn vào đâu?',
+o:['Chọn bảng → Delete → Keep Formatting','Chọn ô trong bảng → Table Design → Convert to Range → Yes','Home → Clear → Clear Table Features','Data → Remove Table → Retain Format'],
+a:1,e:'<b>Table Design → Convert to Range → Yes</b>. Chức năng bảng (filter, total row, structured references) bị xóa nhưng font, màu, border được giữ nguyên.'},
+
+{p:5,n:5,q:'Trên "Informatics", cột "Total" cần nhân Quantity * Fee (named range). Cách nhập công thức đúng là gì?',
+o:['Gõ =Quantity*Fee (dùng tên cột)','Gõ = rồi click ô Quantity → gõ * → click ô Fee (hoặc gõ tên vùng Fee)','Gõ =PRODUCT(Quantity,Fee)','Gõ =B2*$F$1 (tham chiếu tuyệt đối)'],
+a:1,e:'Gõ <b>=</b> → click ô đầu cột Quantity → gõ <b>*</b> → gõ <b>Fee</b> (tên vùng) → Enter. Đề yêu cầu dùng <b>tên vùng</b> nên không được gõ địa chỉ ô.'},
+
+{p:5,n:6,q:'Để bật Banded Rows cho bảng trên "Informatics", bạn tìm ở đâu?',
+o:['Home → Cell Styles → Banded','Table Design → Table Style Options → tick Banded Rows','Data → Group → Banded','Page Layout → Row Shading → Banded'],
+a:1,e:'Click ô trong bảng → <b>Table Design → Table Style Options → tick Banded Rows</b>. Các dòng xen kẽ sẽ được tô màu nền khác nhau, dễ đọc hơn.'},
+
+{p:5,n:7,q:'Để gộp ô K3:L3 theo chiều ngang (Merge Across) trên "Figure", bạn chọn lệnh nào?',
+o:['Home → Merge & Center','Home → Merge & Center → Merge Across','Home → Merge & Center → Merge Cells','Home → Wrap Text → Merge'],
+a:1,e:'Chọn K3:L3 → <b>Home → Merge & Center → Merge Across</b>. Merge Across gộp theo hàng (nếu chọn nhiều hàng, mỗi hàng gộp riêng). Merge & Center gộp tất cả thành 1 ô và căn giữa.'},
+
+{p:5,n:8,q:'Để áp dụng Heading 4 cho ô K3,K11,K19 và Explanatory cho K4:L4,K12:L12,K20:L20, bạn dùng lệnh nào?',
+o:['Home → Font → Heading 4 (rồi Home → Font → Explanatory)','Chọn K3,K11,K19 → Home → Cell Styles → Heading 4. Chọn K4:L4,K12:L12,K20:L20 → Cell Styles → Explanatory','Insert → Styles → Heading 4 + Explanatory','Page Layout → Themes → Heading 4 + Explanatory'],
+a:1,e:'Chọn K3, K11, K19 (giữ Ctrl click) → <b>Home → Cell Styles → Heading 4</b>. Rồi chọn K4:L4, K12:L12, K20:L20 (giữ Ctrl) → <b>Cell Styles → Explanatory</b>. Cell Styles nằm trong nhóm Styles trên tab Home.'},
+];
+
+const qz=document.getElementById('qz');
+let ok=0,no=0,re=Q.length;
+const upd=()=>{document.getElementById('sc-ok').textContent=`✅ ${ok}`;document.getElementById('sc-no').textContent=`❌ ${no}`;document.getElementById('sc-re').textContent=`📝 ${re}`};
+const C={1:'#0c4a6e',2:'#155e75',3:'#065f46',4:'#92400e',5:'#78350f'};
+const N={1:'Project 1 — Exam Bookings & Suppliers',2:'Project 2 — Instructors & Enrollment',3:'Project 3 — Car Sales & Gmetrix',4:'Project 4 — Demographics & Report',5:'Project 5 — Informatics & Figure'};
+let cp=0;
+Q.forEach((q,i)=>{
+  if(q.p!==cp){cp=q.p;const h=document.createElement('div');h.className='topic-hdr';h.style.background=C[q.p];h.innerHTML=`${N[q.p]} <span class="badge">8 câu</span>`;qz.appendChild(h)}
+  const d=document.createElement('div');d.className='qc';d.id=`q${i}`;
+  d.innerHTML=`<div class="qh"><div class="qn" style="background:${C[q.p]}">C${q.n}</div><div class="qt">${q.q}</div></div><div class="opts">${q.o.map((o,j)=>`<div class="op" onclick="ck(${i},${j})"><span class="le">${'ABCD'[j]}</span><span class="tx">${o}</span></div>`).join('')}</div><div class="ea" id="ea${i}"><button class="eb" onclick="se(${i})">💡 Xem giải thích đáp án</button><div class="ec" id="ec${i}">${q.e}</div></div>`;
+  qz.appendChild(d)
+});
+function ck(i,j){const d=document.getElementById(`q${i}`);if(d.classList.contains('ok')||d.classList.contains('ng'))return;const q=Q[i],ops=d.querySelectorAll('.op');ops.forEach(o=>o.classList.add('dis'));ops[q.a].classList.add('co');if(j===q.a){d.classList.add('ok');ok++}else{ops[j].classList.add('wr');d.classList.add('ng');no++}re--;upd();document.getElementById(`ea${i}`).style.display='block'}
+function se(i){const e=document.getElementById(`ec${i}`);e.style.display=e.style.display==='block'?'none':'block'}
+</script>
+</body>
+</html>
